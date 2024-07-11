@@ -89,3 +89,85 @@ resource "aws_route_table_association" "crm-db-asc" {
   subnet_id      = aws_subnet.db-sn.id
   route_table_id = aws_route_table.crm-pvt-rt.id
 }
+
+#crm web nacl
+resource "aws_network_acl" "crm-web-nacl" {
+  vpc_id = aws_vpc.crm-vpc.id
+
+  egress {
+    protocol   = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 65535
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 65535
+  }
+
+  tags = {
+    Name = "crm-web-nacl"
+  }
+}
+
+
+#crm api nacl
+resource "aws_network_acl" "crm-api-nacl" {
+  vpc_id = aws_vpc.crm-vpc.id
+
+  egress {
+    protocol   = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 65535
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 65535
+  }
+
+  tags = {
+    Name = "crm-api-nacl"
+  }
+}
+
+#crm db nacl
+resource "aws_network_acl" "crm-db-nacl" {
+  vpc_id = aws_vpc.crm-vpc.id
+
+  egress {
+    protocol   = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 65535
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 65535
+  }
+
+  tags = {
+    Name = "crm-db-nacl"
+  }
+}
