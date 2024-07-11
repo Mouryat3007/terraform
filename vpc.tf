@@ -39,3 +39,14 @@ resource "aws_subnet" "db-sn" {
     Name = "database-subnet"
   }
 }
+
+#internet gateway
+resource "aws_internet_gateway" "crm-igw" {
+  vpc_id = aws_vpc.crm-vpc.id
+
+  tags = {
+    Name = "crm-internet-gateway"
+  }
+}
+
+
