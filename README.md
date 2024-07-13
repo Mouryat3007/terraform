@@ -1,3 +1,3 @@
 # Terraform
 
-Terraform 
+Terraform setup and configuration
